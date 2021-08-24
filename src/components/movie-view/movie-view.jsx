@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export class MovieView extends React.Component {
 
@@ -24,3 +25,4 @@ export class MovieView extends React.Component {
     ); 
   }
 }
+
