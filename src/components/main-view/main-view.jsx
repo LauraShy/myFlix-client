@@ -12,8 +12,10 @@ class MainView extends React.Component {
     super();
     this.state = {
       movies: [],
-      selectedMovie: null
-    }
+      selectedMovie: null,
+      user: null,
+      register: null,
+    };
   }
 
   componentDidMount(){
@@ -49,7 +51,7 @@ class MainView extends React.Component {
   }
 
   render() {
-    const { movies, selectedMovie } = this.state;
+    const { movies, selectedMovie, register, user } = this.state;
 
     if (!register) return <RegistrationView onRegistration={register => this.onRegistration(register)} />;
 

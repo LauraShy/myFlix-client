@@ -32733,7 +32733,9 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this);
     _this.state = {
       movies: [],
-      selectedMovie: null
+      selectedMovie: null,
+      user: null,
+      register: null
     };
     return _this;
   }
@@ -32783,7 +32785,9 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 
       var _this$state = this.state,
           movies = _this$state.movies,
-          selectedMovie = _this$state.selectedMovie;
+          selectedMovie = _this$state.selectedMovie,
+          register = _this$state.register,
+          user = _this$state.user;
       if (!register) return /*#__PURE__*/_react.default.createElement(_registrationView.RegistrationView, {
         onRegistration: function onRegistration(register) {
           return _this3.onRegistration(register);
@@ -32985,7 +32989,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62423" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61852" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
