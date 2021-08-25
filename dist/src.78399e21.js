@@ -32475,7 +32475,7 @@ function LoginView(props) {
       password = _useState4[0],
       setPassword = _useState4[1];
 
-  var handleSubmit = function handleSubmit() {
+  var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     console.log(username, password);
     /* Send a request to the server for authentication */
@@ -32588,7 +32588,7 @@ MovieCard.propTypes = {
     Director: _propTypes.default.shape({
       Name: _propTypes.default.string.isRequired,
       Bio: _propTypes.default.string.isRequired,
-      Birthdate: _propTypes.default.string.isRequired
+      Birthdate: _propTypes.default.string
     })
   }).isRequired,
   onMovieClick: _propTypes.default.func.isRequired
@@ -32989,7 +32989,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61852" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52268" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
