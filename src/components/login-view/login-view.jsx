@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+import Row from 'react-bootstrap/Row';
+
+import loginicon from './login-icon.png';
+import logo from './myflix-logo.png';
+import './login-view.scss';
 
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
@@ -14,17 +21,34 @@ export function LoginView(props) {
   };
 
   return (
-    <form>
-      <label>
-        Username:
-        <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-      </label>
-      <label>
-        Password:
-        <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-      </label>
-      <button type="submit" onClick={handleSubmit}>Submit</button>
-    </form>
+    <Form>
+      <Row>
+        <img src={logo} className="logo"></img>
+      </Row>
+      <Row className="d-flex mx-auto mt-3 justify-content-center">
+        <img src={loginicon} className="loginicon"></img>
+      </Row>
+      <Row className="d-flex mx-auto mt-3 justify-content-center">
+        <h1>Login</h1>
+      </Row>
+      <Row className="d-flex mx-auto mt-3 justify-content-center">
+        <Form.Group className="mb-3 pt-3" controlId="formUsername">
+          <Form.Label>Username:</Form.Label>
+          <Form.Control type="text" placeholder="Enter username" onChange={e => setUsername(e.target.value)} />
+        </Form.Group>
+      </Row>
+      <Row className="d-flex mx-auto justify-content-center">
+        <Form.Group className="mb-3" controlId="formPassword">
+          <Form.Label>Password:</Form.Label>
+          <Form.Control type="password" placeholder="Enter password" onChange={e => setPassword(e.target.value)} />
+        </Form.Group>
+      </Row>
+      <Row className="d-flex mx-auto mt-3 justify-content-center">
+        <Button variant="primary" type="submit" onClick={handleSubmit}>
+          Submit
+        </Button>
+      </Row>
+    </Form>
   );
 }
 

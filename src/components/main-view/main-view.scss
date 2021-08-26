@@ -1,0 +1,29 @@
+$bgblue: #1A2B50; //primary color
+$blue: #84AFDD; //secondary color
+$green: #88ad8b; //third color
+
+body {
+  color: black;
+  font-size: 13px;
+}
+
+.card {
+  margin-top: 10px;
+}
+
+button.btn-link {
+  background-color: $blue;
+  color:white;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 1em 1.5em;
+  font-size: 14px;
+  font-weight: 700;
+  border-width: 2px;
+}
+
+button.btn-link:hover {
+  text-decoration: none;
+  background-color: $green;
+  color: white;
+}

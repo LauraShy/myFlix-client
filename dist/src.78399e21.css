@@ -1,5 +1,93 @@
+body {
+  color: white;
+}
+
+.form-control {
+  font-size: 13px;
+}
+
+img.registericon {
+  height: 200px;
+}
+label.form-label, label.form-check-label {
+  color: white;
+}
+
+.form-control {
+  font-size: 13px;
+}
+
+img.loginicon {
+  height: 200px;
+}
+body {
+  color: white;
+}
+body {
+  color: white;
+}
+
+.h5 {
+  color: #84AFDD;
+}
+
+span {
+  color: white;
+}
+
+img.logo {
+  justify-content: center;
+}
+body {
+  color: black;
+  font-size: 13px;
+}
+
+.card {
+  margin-top: 10px;
+}
+
+button.btn-link {
+  background-color: #84AFDD;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 1em 1.5em;
+  font-size: 14px;
+  font-weight: 700;
+  border-width: 2px;
+}
+
+button.btn-link:hover {
+  text-decoration: none;
+  background-color: #88ad8b;
+  color: white;
+}
 .my-flix {
-  color: steelblue;
+  color: #84AFDD;
+}
+
+body {
+  background-color: #1A2B50;
+  font-family: "Spartan", sans-serif;
+  font-weight: 400;
+}
+
+h1, .h1 {
+  font-family: "Spartan", sans-serif;
+  font-weight: 700;
+  color: #84AFDD;
+}
+
+h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6 {
+  font-family: "Spartan", sans-serif;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background-color: #84AFDD;
+  border: #84AFDD;
+  font-size: 14px;
 }
 
 /*# sourceMappingURL=/src.78399e21.css.map */

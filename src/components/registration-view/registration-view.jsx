@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+import Row from 'react-bootstrap/Row';
+
+import registericon from './register-icon.png';
+import logo from './myflix-logo.png';
+import './registration-view.scss';
 
 export function RegistrationView(props) {
   const [username, setUsername] = useState("");
@@ -14,27 +21,44 @@ export function RegistrationView(props) {
   };
 
   return (
-    <form>
-      <label>
-        Username: 
-        <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-      </label>
-      <label>
-        Password: 
-        <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-      </label>
-      <label>
-        Email: 
-        <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
-      </label>
-      <label>
-        Birthdate: 
-        <input type="birthdate" value={birthdate} onChange={e => setBirthdate(e.target.value)} />
-      </label>
-      <button className="registerBtn" type="submit" onClick={handleSubmit}>
-        Register
-      </button>
-    </form>
+    <Form>
+      <Row>
+        <img src={logo} className="logo"></img>
+      </Row>
+      <Row className="d-flex mx-auto mt-3 justify-content-center">
+        <img src={registericon} className="registericon"></img>
+      </Row>
+      <Row className="d-flex mx-auto mt-3 justify-content-center">
+        <h1>Register Now!</h1>
+      </Row>
+      <Row className="d-flex mx-auto mt-3 justify-content-center">
+        <Form.Group className="mb-3 pt-3" controlId="formUsername">
+          <Form.Label>Username:</Form.Label>
+          <Form.Control type="text" placeholder="Create username" onChange={e => setUsername(e.target.value)} />
+        </Form.Group>  
+      </Row>
+      <Row className="d-flex mx-auto justify-content-center">
+        <Form.Group className="mb-3" controlId="formPassword">
+          <Form.Label>Password:</Form.Label>
+          <Form.Control type="password" placeholder="Create password" onChange={e => setPassword(e.target.value)} />
+        </Form.Group>
+      </Row>
+      <Row className="d-flex mx-auto justify-content-center">
+        <Form.Group className="mb-3" controlId="formEmail">
+          <Form.Label>Email:</Form.Label>
+          <Form.Control type="email" placeholder="Enter email" value={email} onChange={e => setEmail(e.target.value)} />
+        </Form.Group>
+      </Row>
+      <Row className="d-flex mx-auto justify-content-center">
+        <Form.Group controlId="dob">
+          <Form.Label>Birthday:</Form.Label>
+          <Form.Control type="birthdate" placeholder="YYYY-MM-DD" value={birthdate} onChange={e => setBirthdate(e.target.value)} />
+        </Form.Group>
+      </Row>
+      <Row className="d-flex mx-auto mt-3 justify-content-center"> 
+        <Button variant="primary" type="submit" onClick={handleSubmit}>Submit</Button>
+      </Row>
+    </Form>
   )
 }
 
