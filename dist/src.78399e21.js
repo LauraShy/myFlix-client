@@ -34873,15 +34873,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         onLoggedIn: function onLoggedIn(user) {
           return _this3.onLoggedIn(user);
         }
-      });
-
-      /*#__PURE__*/
-      _react.default.createElement("button", {
-        onClick: function onClick() {
-          _this3.onLoggedOut();
-        }
-      }, "Logout"); // Before the movies have been loaded
-
+      }); // Before the movies have been loaded
 
       if (movies.length === 0) return /*#__PURE__*/_react.default.createElement("div", {
         className: "main-view"
