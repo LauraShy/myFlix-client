@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button'
+import { Link } from "react-router-dom";
 
 import logo from './myflix-logo.png';
 import './movie-view.scss'
@@ -32,22 +33,6 @@ export class MovieView extends React.Component {
         <Link to={`/genres/${movie.Genre.Name}`}>
           <Button variant="link">Genre</Button>
         </Link>
-        {/* <div className="movie-genre mt-3">
-          <span className="label h5">Genre: </span>
-          <span className="value">{movie.Genre.Name}</span>
-        </div>
-        <div className="movie-genre-descp mt-2">  
-          <span className="label h5">Genre Description: </span>
-          <span clasName="value">{movie.Genre.Description}</span>
-        </div>
-        <div className="movie-director mt-3">  
-          <span className="label h5">Director: </span>
-          <span clasName="value">{movie.Director.Name}</span>
-        </div>
-        <div className="movie-director-bio mt-2">  
-          <span className="label h5">Director: </span>
-          <span clasName="value">{movie.Director.Bio}</span>
-        </div> */}
         <Button className="mt-4" onClick={() => { onBackClick(null); }}>Back</Button>
       </div>
     ); 

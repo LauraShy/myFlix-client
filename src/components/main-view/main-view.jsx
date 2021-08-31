@@ -1,13 +1,15 @@
 import React from 'react';
 import axios from 'axios';
 
-import { BrowserRouter as Router, Route } from "react-router-dom";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
 import { RegistrationView } from "../registration-view/registration-view";
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
+import { DirectorView } from '../director-view/director-view';
+import { GenreView } from '../genre-view/genre-view';
+import { ProfileView } from '../profile-view/profile-view';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
@@ -68,7 +70,7 @@ class MainView extends React.Component {
     });
   }
 
-  // GET Request
+  // GET MOVIES REQUEST
   getMovies(token) {
     axios.get('https://myflixapplication.herokuapp.com/movies', {
       headers: { Authorization: `Bearer ${token}`}
@@ -82,6 +84,23 @@ class MainView extends React.Component {
     .catch(function (error) {
       console.log(error);
     });
+  }
+
+  // GET USERS REQUEST
+  getUsers(token) {
+    axios.post('https://myflixapplication.herokuapp.com/users', {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(response => {
+        // Assign the result to the state
+        this.setState({
+          users: response.data
+        });
+        console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   render() {
@@ -129,7 +148,7 @@ class MainView extends React.Component {
           }} />
 
           {/* GENRE VIEW PATH */}
-          <Route path="/genres/:name" render={({ match }) => {
+          <Route path="movies/genre/:name" render={({ match }) => {
             if (!user) return <Col>
               <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>
@@ -140,7 +159,7 @@ class MainView extends React.Component {
           }} />
 
           {/* DIRECTOR VIEW PATH */}
-          <Route path="/directors/:name" render={({ match }) => {
+          <Route path="movies/director/:name" render={({ match }) => {
             if (!user) return <Col>
               <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>
