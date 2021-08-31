@@ -69,6 +69,10 @@ button.btn-link:hover {
   background-color: #88ad8b;
   color: white;
 }
+
+img.movie-img {
+  max-height: 500px;
+}
 .my-flix {
   color: #84AFDD;
 }
