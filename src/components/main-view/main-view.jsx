@@ -148,7 +148,7 @@ class MainView extends React.Component {
           }} />
 
           {/* GENRE VIEW PATH */}
-          <Route path="movies/genre/:name" render={({ match }) => {
+          <Route path="/genres/:name" render={({ match }) => {
             if (!user) return <Col>
               <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>
@@ -159,7 +159,7 @@ class MainView extends React.Component {
           }} />
 
           {/* DIRECTOR VIEW PATH */}
-          <Route path="movies/director/:name" render={({ match }) => {
+          <Route path="/directors/:name" render={({ match }) => {
             if (!user) return <Col>
               <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>

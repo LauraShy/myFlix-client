@@ -37833,7 +37833,7 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
           onBackClick = _this$props.onBackClick;
       return /*#__PURE__*/_react.default.createElement("div", {
         className: "director-view"
-      }, /*#__PURE__*/_react.default.createElement("div", {
+      }, /*#__PURE__*/_react.default.createElement("h1", null, "Director"), /*#__PURE__*/_react.default.createElement("div", {
         className: "director-name"
       }, /*#__PURE__*/_react.default.createElement("h1", null, /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
@@ -51997,7 +51997,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           }));
         }
       }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
-        path: "movies/genre/:name",
+        path: "/genres/:name",
         render: function render(_ref2) {
           var match = _ref2.match;
           if (!user) return /*#__PURE__*/_react.default.createElement(_Col.default, null, /*#__PURE__*/_react.default.createElement(_loginView.LoginView, {
@@ -52020,7 +52020,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           }));
         }
       }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
-        path: "movies/director/:name",
+        path: "/directors/:name",
         render: function render(_ref3) {
           var match = _ref3.match;
           if (!user) return /*#__PURE__*/_react.default.createElement(_Col.default, null, /*#__PURE__*/_react.default.createElement(_loginView.LoginView, {
@@ -52147,7 +52147,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55662" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63729" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

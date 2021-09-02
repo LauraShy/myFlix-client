@@ -6,10 +6,11 @@ export class DirectorView extends React.Component {
 
   render() {
     const { director, onBackClick } = this.props;
-
+    
     return (
+      
       <div className="director-view">
-
+        <h1>Director</h1>
         <div className="director-name">
           <h1>
             <span className="value">{movie.Director.Name}</span>
