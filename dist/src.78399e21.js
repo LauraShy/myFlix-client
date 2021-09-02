@@ -37038,9 +37038,9 @@ Row.defaultProps = defaultProps;
 var _default = Row;
 exports.default = _default;
 },{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","./ThemeProvider":"../node_modules/react-bootstrap/esm/ThemeProvider.js"}],"components/registration-view/register-icon.png":[function(require,module,exports) {
-module.exports = "/7b4ff788f1fb799c5166936742fc6d08.png";
+module.exports = "/register-icon.42fc6d08.png";
 },{}],"components/registration-view/myflix-logo.png":[function(require,module,exports) {
-module.exports = "/52f9d576a5dcaebec920425c56b3dd8a.png";
+module.exports = "/myflix-logo.56b3dd8a.png";
 },{}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
@@ -37269,9 +37269,9 @@ RegistrationView.propTypes = {
   onRegistration: _propTypes.default.func.isRequired
 };
 },{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","./register-icon.png":"components/registration-view/register-icon.png","./myflix-logo.png":"components/registration-view/myflix-logo.png","./registration-view.scss":"components/registration-view/registration-view.scss"}],"components/login-view/login-icon.png":[function(require,module,exports) {
-module.exports = "/683912f6df44bb4f71e72ab609fa2392.png";
+module.exports = "/login-icon.09fa2392.png";
 },{}],"components/login-view/myflix-logo.png":[function(require,module,exports) {
-module.exports = "/ee2cc8f5ca86cfcbd1752d04437928e8.png";
+module.exports = "/myflix-logo.437928e8.png";
 },{}],"components/login-view/login-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
@@ -51756,7 +51756,55 @@ GenreView.propTypes = {
     Description: _propTypes.default.string.isRequired
   }).isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js"}],"components/profile-view/profile-view.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js"}],"components/navbar-view/myflix-logo.png":[function(require,module,exports) {
+module.exports = "/myflix-logo.e68a733a.png";
+},{}],"components/navbar-view/navbar-view.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactBootstrap = require("react-bootstrap");
+
+var _myflixLogo = _interopRequireDefault(require("./myflix-logo.png"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Navigation = function Navigation() {
+  return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar, {
+    collapseOnSelect: true,
+    expand: "lg",
+    bg: "dark",
+    variant: "dark",
+    fixed: "top"
+  }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Brand, {
+    href: "#home"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    src: _myflixLogo.default,
+    className: "logo",
+    width: "auto",
+    height: "30"
+  })), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Toggle, {
+    "aria-controls": "responsive-navbar-nav"
+  }), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Collapse, {
+    id: "responsive-navbar-nav"
+  }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav, {
+    className: "me-auto"
+  }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav.Link, {
+    href: "/"
+  }, "Movies"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav.Link, {
+    href: "/profile"
+  }, "Profile")))));
+};
+
+var _default = Navigation; // I wasn't sure where to put the profile view so I was thinking in a navbar...but don't really undertand how to implement it into each view
+
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","./myflix-logo.png":"components/navbar-view/myflix-logo.png"}],"components/profile-view/profile-view.jsx":[function(require,module,exports) {
 
 },{}],"components/main-view/main-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
@@ -51788,6 +51836,8 @@ var _movieView = require("../movie-view/movie-view");
 var _directorView = require("../director-view/director-view");
 
 var _genreView = require("../genre-view/genre-view");
+
+var _navbarView = require("../navbar-view/navbar-view");
 
 var _profileView = require("../profile-view/profile-view");
 
@@ -52052,7 +52102,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 
 var _default = MainView;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../registration-view/registration-view":"components/registration-view/registration-view.jsx","../login-view/login-view":"components/login-view/login-view.jsx","../movie-card/movie-card":"components/movie-card/movie-card.jsx","../movie-view/movie-view":"components/movie-view/movie-view.jsx","../director-view/director-view":"components/director-view/director-view.jsx","../genre-view/genre-view":"components/genre-view/genre-view.jsx","../profile-view/profile-view":"components/profile-view/profile-view.jsx","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","./main-view.scss":"components/main-view/main-view.scss"}],"index.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../registration-view/registration-view":"components/registration-view/registration-view.jsx","../login-view/login-view":"components/login-view/login-view.jsx","../movie-card/movie-card":"components/movie-card/movie-card.jsx","../movie-view/movie-view":"components/movie-view/movie-view.jsx","../director-view/director-view":"components/director-view/director-view.jsx","../genre-view/genre-view":"components/genre-view/genre-view.jsx","../navbar-view/navbar-view":"components/navbar-view/navbar-view.jsx","../profile-view/profile-view":"components/profile-view/profile-view.jsx","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","./main-view.scss":"components/main-view/main-view.scss"}],"index.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
