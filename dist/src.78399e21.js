@@ -37038,9 +37038,9 @@ Row.defaultProps = defaultProps;
 var _default = Row;
 exports.default = _default;
 },{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","./ThemeProvider":"../node_modules/react-bootstrap/esm/ThemeProvider.js"}],"components/registration-view/register-icon.png":[function(require,module,exports) {
-module.exports = "/register-icon.42fc6d08.png";
+module.exports = "/7b4ff788f1fb799c5166936742fc6d08.png";
 },{}],"components/registration-view/myflix-logo.png":[function(require,module,exports) {
-module.exports = "/myflix-logo.56b3dd8a.png";
+module.exports = "/52f9d576a5dcaebec920425c56b3dd8a.png";
 },{}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
@@ -37269,9 +37269,9 @@ RegistrationView.propTypes = {
   onRegistration: _propTypes.default.func.isRequired
 };
 },{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","./register-icon.png":"components/registration-view/register-icon.png","./myflix-logo.png":"components/registration-view/myflix-logo.png","./registration-view.scss":"components/registration-view/registration-view.scss"}],"components/login-view/login-icon.png":[function(require,module,exports) {
-module.exports = "/login-icon.09fa2392.png";
+module.exports = "/683912f6df44bb4f71e72ab609fa2392.png";
 },{}],"components/login-view/myflix-logo.png":[function(require,module,exports) {
-module.exports = "/myflix-logo.437928e8.png";
+module.exports = "/ee2cc8f5ca86cfcbd1752d04437928e8.png";
 },{}],"components/login-view/login-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
@@ -37831,22 +37831,23 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           director = _this$props.director,
           onBackClick = _this$props.onBackClick;
+      console.log(director);
       return /*#__PURE__*/_react.default.createElement("div", {
-        className: "director-view"
+        className: "director-view mt-5"
       }, /*#__PURE__*/_react.default.createElement("h1", null, "Director"), /*#__PURE__*/_react.default.createElement("div", {
-        className: "director-name"
-      }, /*#__PURE__*/_react.default.createElement("h1", null, /*#__PURE__*/_react.default.createElement("span", {
+        className: "director-name mt-3"
+      }, /*#__PURE__*/_react.default.createElement("h2", null, /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, movie.Director.Name))), /*#__PURE__*/_react.default.createElement("div", {
-        className: "director-bio"
+      }, director.Name))), /*#__PURE__*/_react.default.createElement("div", {
+        className: "director-bio mt-2"
       }, /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, movie.Director.Bio)), /*#__PURE__*/_react.default.createElement("div", {
-        className: "director-birthdate"
+      }, "Bio: ", director.Bio)), /*#__PURE__*/_react.default.createElement("div", {
+        className: "director-birthdate mt-2"
       }, /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, movie.Director.Birthdate)), /*#__PURE__*/_react.default.createElement(_Button.default, {
-        variant: "primary",
+      }, "Birthyear: ", director.Birth)), /*#__PURE__*/_react.default.createElement(_Button.default, {
+        variant: "primary mt-3",
         onClick: function onClick() {
           onBackClick(null);
         }
@@ -51676,7 +51677,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.GenreView = void 0;
+exports.GenreView = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -51725,17 +51726,18 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           genre = _this$props.genre,
           onBackClick = _this$props.onBackClick;
+      console.log(genre);
       return /*#__PURE__*/_react.default.createElement("div", {
         className: "genre-view"
-      }, /*#__PURE__*/_react.default.createElement("div", {
+      }, /*#__PURE__*/_react.default.createElement("h1", null, "Genre"), /*#__PURE__*/_react.default.createElement("div", {
         className: "genre-name"
       }, /*#__PURE__*/_react.default.createElement("h1", null, /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, movie.Genre.Name))), /*#__PURE__*/_react.default.createElement("div", {
+      }, "Genre: ", genre.Name))), /*#__PURE__*/_react.default.createElement("div", {
         className: "genre-description"
       }, /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, movie.Genre.Description)), /*#__PURE__*/_react.default.createElement(_reactBootstrap.default, {
+      }, "Description: ", genre.Description)), /*#__PURE__*/_react.default.createElement(_reactBootstrap.default, {
         variant: "primary",
         onClick: function onClick() {
           onBackClick(null);
@@ -51754,8 +51756,6 @@ GenreView.propTypes = {
     Description: _propTypes.default.string.isRequired
   }).isRequired
 };
-var _default = GenreView;
-exports.default = _default;
 },{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js"}],"components/profile-view/profile-view.jsx":[function(require,module,exports) {
 
 },{}],"components/main-view/main-view.scss":[function(require,module,exports) {
@@ -51952,6 +51952,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
         exact: true,
         path: "/",
+        id: "mainview",
         render: function render() {
           if (!user) return /*#__PURE__*/_react.default.createElement(_Col.default, null, /*#__PURE__*/_react.default.createElement(_loginView.LoginView, {
             onLoggedIn: function onLoggedIn(user) {
@@ -52147,7 +52148,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63729" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56716" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

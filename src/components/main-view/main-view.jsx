@@ -118,7 +118,7 @@ class MainView extends React.Component {
         <Row className="main-view justify-content-md-center">
 
         {/* MAIN VIEW PATH */}  
-        <Route exact path="/" render={() => {
+        <Route exact path="/" id='mainview' render={() => {
           if (!user) return <Col>
               <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>
