@@ -12,9 +12,9 @@ export class DirectorView extends React.Component {
       <div className="director-view mt-5">
         <h1>Director</h1>
         <div className="director-name mt-3">
-          <h2>
+          <h3>
             <span className="value">{director.Name}</span>
-          </h2>
+          </h3>
         </div>
         <div className="director-bio mt-2">
           <span className="value">Bio: {director.Bio}</span>

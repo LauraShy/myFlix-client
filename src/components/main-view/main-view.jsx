@@ -9,7 +9,7 @@ import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
-import { Navigation } from '../navbar-view/navbar-view';
+import { Navigation } from '../header/header';
 import { ProfileView } from '../profile-view/profile-view';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -139,7 +139,7 @@ class MainView extends React.Component {
           }} />
 
           {/* MOVIE VIEW PATH */}
-          <Route path="/movies/:movieId" render={({ match }) => {
+          <Route path="/movies/:movieId" render={({ match, history }) => {
             if (!user) return <Col>
               <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>
@@ -149,7 +149,7 @@ class MainView extends React.Component {
           }} />
 
           {/* GENRE VIEW PATH */}
-          <Route path="/genres/:name" render={({ match }) => {
+          <Route path="/genres/:name" render={({ match, history }) => {
             if (!user) return <Col>
               <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>
@@ -160,7 +160,7 @@ class MainView extends React.Component {
           }} />
 
           {/* DIRECTOR VIEW PATH */}
-          <Route path="/directors/:name" render={({ match }) => {
+          <Route path="/directors/:name" render={({ match, history }) => {
             if (!user) return <Col>
               <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>
