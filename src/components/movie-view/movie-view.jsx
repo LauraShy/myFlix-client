@@ -13,9 +13,6 @@ export class MovieView extends React.Component {
 
     return(
       <div className="movie-view">
-        <div>
-          <img src={logo} className="logo"></img>
-        </div>
         <div className="movie-poster mt-3">
           <img src={movie.ImagePath} className="movie-img" />
         </div>

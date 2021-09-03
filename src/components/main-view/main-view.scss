@@ -1,11 +1,14 @@
 $bgblue: #1A2B50; //primary color
 $blue: #84AFDD; //secondary color
 $hblue: #3d78b8; //heading color
-$green: #88ad8b; //third color
 
 body {
   color: black;
   font-size: 13px;
+}
+
+.main-view {
+  padding-top: 100px;
 }
 
 .card {
@@ -25,10 +28,27 @@ button.btn-link {
 
 button.btn-link:hover {
   text-decoration: none;
-  background-color: $green;
-  color: white;
+  background-color: white;
+  color: $bgblue;
 }
 
 img.movie-img {
   max-height: 500px;
+}
+
+button.mt-4.btn.btn-primary:hover {
+  background-color: white;
+  color: $bgblue;
+  font-weight: 700;
+}
+
+button.mt-4.btn.btn-primary {
+  font-weight: 700;
+  margin-left: 20px;
+}
+
+button.btn.btn-primary.mt-3:hover {
+  background-color: white;
+  color: $bgblue;
+  font-weight: 700;
 }

@@ -2,16 +2,19 @@ import React from 'react';
 import { Navbar, Nav, Container} from 'react-bootstrap';
 import logo from './myflix-logo.png';
 
-const Navigation = () => {
+import './header.scss';
+
+const Header = (props) => {
+  console.log('header', props)
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top">
-      <Container>
+    <Navbar collapseOnSelect expand="lg" className="my-awesome-nav" fixed="top">
+      {props.user &&  <Container>
       <Navbar.Brand href="#home">
         <img 
           src={logo} 
           className="logo"
           width="auto"
-          height="30" 
+          height="55" 
         />
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -21,11 +24,10 @@ const Navigation = () => {
           <Nav.Link href='/profile'>Profile</Nav.Link>
         </Nav>
       </Navbar.Collapse>
-      </Container>
+      </Container>  }
+     
     </Navbar>
   )
 }
 
-export default Navigation;
-// I wasn't sure where to put the profile view so I was thinking in a navbar...but don't really undertand how to implement it into each view
-
+export default Header;

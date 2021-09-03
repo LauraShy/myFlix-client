@@ -9,7 +9,7 @@ import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
-import { Navigation } from '../header/header';
+import  Header  from '../header/header';
 import { ProfileView } from '../profile-view/profile-view';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -116,6 +116,7 @@ class MainView extends React.Component {
 
     return (
       <Router>
+        <Header user={user} />
         <Row className="main-view justify-content-md-center">
 
         {/* MAIN VIEW PATH */}  

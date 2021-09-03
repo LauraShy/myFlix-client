@@ -44,9 +44,20 @@ button.btn.btn-link, button.mt-4.btn.btn-primary {
   padding: 10px !important;
   margin-top: 20px !important;
 }
+.my-awesome-nav {
+  background-color: black;
+}
+
+a.nav-link {
+  color: white !important;
+}
 body {
   color: black;
   font-size: 13px;
+}
+
+.main-view {
+  padding-top: 100px;
 }
 
 .card {
@@ -66,12 +77,29 @@ button.btn-link {
 
 button.btn-link:hover {
   text-decoration: none;
-  background-color: #88ad8b;
-  color: white;
+  background-color: white;
+  color: #1A2B50;
 }
 
 img.movie-img {
   max-height: 500px;
+}
+
+button.mt-4.btn.btn-primary:hover {
+  background-color: white;
+  color: #1A2B50;
+  font-weight: 700;
+}
+
+button.mt-4.btn.btn-primary {
+  font-weight: 700;
+  margin-left: 20px;
+}
+
+button.btn.btn-primary.mt-3:hover {
+  background-color: white;
+  color: #1A2B50;
+  font-weight: 700;
 }
 .my-flix {
   color: #84AFDD;
