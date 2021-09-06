@@ -11,6 +11,7 @@ import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
 import  Header  from '../header/header';
 import { ProfileView } from '../profile-view/profile-view';
+import { FavoriteMovies } from '../favorite-movies/favorite-movies'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
@@ -61,6 +62,11 @@ class MainView extends React.Component {
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
     this.getMovies(authData.token);
+  }
+
+  onProfileUpdate(updatedUser) {
+    this.props.setUser(updatedUser);
+    localStorage.setItem('user', updatedUser.Username);
   }
 
   onLoggedOut() {
@@ -148,6 +154,22 @@ class MainView extends React.Component {
               <MovieView movie={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()} />
             </Col>
           }} />
+
+          {/* PROFILE VIEW PATH */}
+          <Route path="/users/:Username" render={({ history }) => {
+            if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+            if (movies.length === 0) return <div className="main-view" />;
+            return <>
+              <Col lg={12} md={12}>
+                <FavoriteMovies user={user} movies={movies} history={history} />
+              </Col>
+              <Col lg={8} md={12}>
+                <ProfileView user={user} history={history} onProfileUpdate={this.onProfileUpdate} onBackClick={() => history.goBack()} />
+              </Col>
+              
+            </>
+          }} />
+
 
           {/* GENRE VIEW PATH */}
           <Route path="/genres/:name" render={({ match, history }) => {

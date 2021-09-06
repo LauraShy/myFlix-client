@@ -9,7 +9,7 @@ const Header = (props) => {
   return (
     <Navbar collapseOnSelect expand="lg" className="my-awesome-nav" fixed="top">
       {props.user &&  <Container>
-      <Navbar.Brand href="#home">
+      <Navbar.Brand href="/">
         <img 
           src={logo} 
           className="logo"
@@ -21,7 +21,7 @@ const Header = (props) => {
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
           <Nav.Link href='/'>Movies</Nav.Link>
-          <Nav.Link href='/profile'>Profile</Nav.Link>
+          <Nav.Link href='/users/:Username'>Profile</Nav.Link>
         </Nav>
       </Navbar.Collapse>
       </Container>  }

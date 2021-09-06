@@ -1,0 +1,36 @@
+$bgblue: #1A2B50; //primary color
+$blue: #84AFDD; //secondary color
+$hblue: #3d78b8; //heading color
+
+button.profile-btn {
+  background-color: $blue;
+  color:white;
+  text-decoration: none;
+  padding: 1em 1em;
+  font-size: 14px;
+  border-width: 2px;
+  margin: 15px;
+}
+
+button.profile-btn:hover {
+  text-decoration: none;
+  background-color: white !important;
+  color: $bgblue !important;
+}
+
+h4.d-flex.justify-content-center.mt-3 {
+  color: $blue !important;
+}
+
+.profile-view a {
+  text-decoration: none;
+  color: $bgblue;
+}
+
+.fav-btn {
+  text-decoration: none;
+  padding: 1em 1em;
+  font-weight: 700;
+}
+
+
