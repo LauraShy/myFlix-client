@@ -7,21 +7,40 @@ import './profile-view.scss';
 import { Link } from 'react-router-dom';
 
 export class ProfileView extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      formValues: {
-        Username: props.user.Username,
-        Password: '',
-        Email: props.user.Email,
-        Birthday: this.formatDate(props.user.Birthday),
-        FavoriteMovies: props.user.FavoriteMovies,
-      },
+      username: null,
+      password: null,
+      email: null,
+      birthDate: null,
+      favoriteMovies: [],
+      movies: [],
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.updateProfile = this.updateProfile.bind(this);
-    this.deleteAcc = this.deleteAcc.bind(this);
+  }
+
+  getUser(token) {
+    let url =
+      "https://myflixapplication.herokuapp.com/users/" + localStorage.getItem("user");
+    axios
+      .get(url, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        console.log(response.data),
+        this.setState({
+          username: response.data.Username,
+          password: response.data.Password,
+          email: response.data.Email,
+          birthday: new Date(response.data.Birthday).toLocaleDateString(),
+          favoriteMovies: response.data.FavoriteMovies,
+        });
+      });
+  }
+
+  componentDidMount() {
+    let accessToken = localStorage.getItem("token");
+    this.getUser(accessToken);
   }
 
   // PUT request to update the users profile
@@ -41,7 +60,8 @@ export class ProfileView extends React.Component {
 
   // DELETE request to delete user profile
   deleteAcc() {
-    axios.delete(`https://myflixapplication.herokuapp.com/users/${this.props.user.Username}`)
+    axios
+      .delete(`https://myflixapplication.herokuapp.com/users/${this.props.user.Username}`)
       .then(() => {
         alert(`${this.props.user.Username} has been deleted`);
         localStorage.removeItem("user");
@@ -82,14 +102,11 @@ export class ProfileView extends React.Component {
     return (
       <Container className="profile-view">
 
-        <div className="user-info mb-5 mt-5 text-center ">
+        <div className="user-info mb-5 mt-4 text-center">
           <h1 className="d-flex justify-content-center mt-2">User Profile</h1>
           <p className="d-flex justify-content-center text-light mb-1"><b className="mr-1">Username:</b> {`${user.Username}`} </p>
           <p className="d-flex justify-content-center text-light mb-1"><b className="mr-1">Email:</b> {`${user.Email}`}</p>
           <p className="d-flex justify-content-center text-light mb-1"><b className="mr-1">Birthday:</b> {`${this.formatDate(user.Birthday)}`}</p>
-          <Button className="fav-btn mt-3">
-            <Link to="/user/:Username/FavoriteMovies" className="">Favorite Movies</Link>
-          </Button>
         </div>
 
         <Form>
