@@ -51929,19 +51929,44 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
     } // DELETE request to delete user profile
 
   }, {
-    key: "deleteAcc",
-    value: function deleteAcc() {
-      var _this4 = this;
+    key: "handleDelete",
+    value: function handleDelete() {
+      var token = localStorage.getItem("token");
+      var user = localStorage.getItem("user");
 
-      _axios.default.delete("https://myflixapplication.herokuapp.com/users/".concat(this.props.user.Username)).then(function () {
-        alert("".concat(_this4.props.user.Username, " has been deleted"));
+      _axios.default.delete("https://myflixapplication.herokuapp.com/users/".concat(user), {
+        headers: {
+          Authorization: "Bearer ".concat(token)
+        }
+      }).then(function () {
+        alert(user + " has been deleted.");
         localStorage.removeItem("user");
         localStorage.removeItem("token");
         window.location.pathname = "/";
-
-        _this4.props.deleteUser();
       }).catch(function (error) {
         console.log(error);
+      });
+    } // Remove Favorite Movie
+
+  }, {
+    key: "removeFavorite",
+    value: function removeFavorite(movie) {
+      var _this4 = this;
+
+      var token = localStorage.getItem("token");
+
+      var url = "https://myflixapplication.herokuapp.com/users/" + localStorage.getItem("user") + "/movies/" + movie._id;
+
+      _axios.default.delete(url, {
+        headers: {
+          Authorization: "Bearer ".concat(token)
+        }
+      }).then(function (response) {
+        console.log(response);
+
+        _this4.componentDidMount();
+
+        alert(movie.Title + " was removed from your favorite movies.");
       });
     } // Convert date into YYYY/MM/DD
 
@@ -51972,10 +51997,13 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this5 = this;
 
-      var user = this.props.user;
+      var _this$state = this.state,
+          username = _this$state.username,
+          birthday = _this$state.birthday,
+          email = _this$state.email;
       return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, {
         className: "profile-view"
-      }, /*#__PURE__*/_react.default.createElement("div", {
+      }, /*#__PURE__*/_react.default.createElement(Row, {
         className: "user-info mb-5 mt-4 text-center"
       }, /*#__PURE__*/_react.default.createElement("h1", {
         className: "d-flex justify-content-center mt-2"
@@ -51983,15 +52011,39 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         className: "d-flex justify-content-center text-light mb-1"
       }, /*#__PURE__*/_react.default.createElement("b", {
         className: "mr-1"
-      }, "Username:"), " ", "".concat(user.Username), " "), /*#__PURE__*/_react.default.createElement("p", {
+      }, "Username:"), " ", "".concat(username), " "), /*#__PURE__*/_react.default.createElement("p", {
         className: "d-flex justify-content-center text-light mb-1"
       }, /*#__PURE__*/_react.default.createElement("b", {
         className: "mr-1"
-      }, "Email:"), " ", "".concat(user.Email)), /*#__PURE__*/_react.default.createElement("p", {
+      }, "Email:"), " ", "".concat(email)), /*#__PURE__*/_react.default.createElement("p", {
         className: "d-flex justify-content-center text-light mb-1"
       }, /*#__PURE__*/_react.default.createElement("b", {
         className: "mr-1"
-      }, "Birthday:"), " ", "".concat(this.formatDate(user.Birthday)))), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form, null, /*#__PURE__*/_react.default.createElement("h4", {
+      }, "Birthday:"), " ", "".concat(this.formatDate(birthday)))), /*#__PURE__*/_react.default.createElement(Row, {
+        className: "justify-content-md-center"
+      }, /*#__PURE__*/_react.default.createElement("h2", {
+        className: "mb-2 mt-4"
+      }, "My Favorite Movies "), favoriteMovieList.length === 0 && /*#__PURE__*/_react.default.createElement("p", {
+        className: "text-light"
+      }, "You do not have any favorite movies yet!"), favoriteMovieList.length > 0 && favoriteMovieList.map(function (movie) {
+        return /*#__PURE__*/_react.default.createElement(Col, {
+          sm: 12,
+          md: 6
+        }, /*#__PURE__*/_react.default.createElement(Card, {
+          key: movie._id,
+          className: "fav-card mt-2"
+        }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+          to: "/movies/".concat(movie._id)
+        }, /*#__PURE__*/_react.default.createElement(Card.Img, {
+          id: "poster",
+          src: movie.ImagePath
+        })), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
+          className: "profile-btn mt-2",
+          onClick: function onClick() {
+            return _this5.removeFavorite(movie);
+          }
+        }, "Remove")));
+      })), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form, null, /*#__PURE__*/_react.default.createElement("h4", {
         className: "d-flex justify-content-center mt-3"
       }, "Update Your Account"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Group, {
         controlId: "formUsername"
@@ -52036,7 +52088,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
           var confirmBox = window.confirm("Are you sure you want to delete your account?");
 
           if (confirmBox === true) {
-            _this5.deleteAcc();
+            _this5.handleDelete();
           }
         }
       }, " Delete Account ")));
@@ -52484,7 +52536,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60376" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53388" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

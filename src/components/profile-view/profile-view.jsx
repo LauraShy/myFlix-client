@@ -59,18 +59,40 @@ export class ProfileView extends React.Component {
   }
 
   // DELETE request to delete user profile
-  deleteAcc() {
+  handleDelete() {
+    const token = localStorage.getItem("token");
+    const user = localStorage.getItem("user");
     axios
-      .delete(`https://myflixapplication.herokuapp.com/users/${this.props.user.Username}`)
+      .delete(`https://myflixapplication.herokuapp.com/users/${user}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then(() => {
-        alert(`${this.props.user.Username} has been deleted`);
+        alert(user + " has been deleted.");
         localStorage.removeItem("user");
         localStorage.removeItem("token");
         window.location.pathname = "/";
-        this.props.deleteUser();
       })
       .catch(function (error) {
         console.log(error);
+      });
+  }
+
+  // Remove Favorite Movie
+  removeFavorite(movie) {
+    let token = localStorage.getItem("token");
+    let url =
+      "https://myflixapplication.herokuapp.com/users/" +
+      localStorage.getItem("user") +
+      "/movies/" +
+      movie._id;
+    axios
+      .delete(url, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        console.log(response);
+        this.componentDidMount();
+        alert(movie.Title + " was removed from your favorite movies.");
       });
   }
 
@@ -97,17 +119,44 @@ export class ProfileView extends React.Component {
 
   
   render() {
-    let { user } = this.props;
+    let { username, birthday, email } = this.state;
 
     return (
       <Container className="profile-view">
 
-        <div className="user-info mb-5 mt-4 text-center">
+        <Row className="user-info mb-5 mt-4 text-center">
           <h1 className="d-flex justify-content-center mt-2">User Profile</h1>
-          <p className="d-flex justify-content-center text-light mb-1"><b className="mr-1">Username:</b> {`${user.Username}`} </p>
-          <p className="d-flex justify-content-center text-light mb-1"><b className="mr-1">Email:</b> {`${user.Email}`}</p>
-          <p className="d-flex justify-content-center text-light mb-1"><b className="mr-1">Birthday:</b> {`${this.formatDate(user.Birthday)}`}</p>
-        </div>
+          <p className="d-flex justify-content-center text-light mb-1"><b className="mr-1">Username:</b> {`${username}`} </p>
+          <p className="d-flex justify-content-center text-light mb-1"><b className="mr-1">Email:</b> {`${email}`}</p>
+          <p className="d-flex justify-content-center text-light mb-1"><b className="mr-1">Birthday:</b> {`${this.formatDate(birthday)}`}</p>
+        </Row>
+
+        <Row className="justify-content-md-center">
+            <h2 className="mb-2 mt-4">My Favorite Movies </h2>
+            {favoriteMovieList.length === 0 && (
+              <p className="text-light">
+                You do not have any favorite movies yet!
+              </p>
+            )}
+            {favoriteMovieList.length > 0 &&
+              favoriteMovieList.map((movie) => {
+                return (
+                  <Col sm={12} md={6}>
+                    <Card key={movie._id} className="fav-card mt-2">
+                      <Link to={`/movies/${movie._id}`}>
+                        <Card.Img id="poster" src={movie.ImagePath} />
+                      </Link>
+                      <Button
+                        className="profile-btn mt-2"
+                        onClick={() => this.removeFavorite(movie)}
+                      >
+                        Remove
+                      </Button>
+                    </Card>
+                  </Col>
+                );
+              })}
+          </Row>
 
         <Form>
           <h4 className="d-flex justify-content-center mt-3">Update Your Account</h4>
@@ -133,7 +182,7 @@ export class ProfileView extends React.Component {
           <Button className="profile-btn mr-2 mt-5" type="submit" onClick={this.handleSubmit}>Update Profile</Button>
           <Button className="profile-btn mt-5" onClick={() => {
             const confirmBox = window.confirm("Are you sure you want to delete your account?")
-            if (confirmBox === true) { this.deleteAcc() }
+            if (confirmBox === true) { this.handleDelete() }
           }} > Delete Account </Button>
         </div>
 
