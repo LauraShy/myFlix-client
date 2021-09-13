@@ -51779,13 +51779,14 @@ require("./header.scss");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Header = function Header(props) {
-  console.log('header', props);
+  var user = props.user;
+  console.log(user);
   return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar, {
     collapseOnSelect: true,
     expand: "lg",
     className: "my-awesome-nav",
     fixed: "top"
-  }, props.user && /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Brand, {
+  }, user && /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Brand, {
     href: "/"
   }, /*#__PURE__*/_react.default.createElement("img", {
     src: _myflixLogo.default,
@@ -51801,7 +51802,7 @@ var Header = function Header(props) {
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav.Link, {
     href: "/"
   }, "Movies"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav.Link, {
-    href: "/users/:Username"
+    href: "/users/".concat(user)
   }, "Profile")))));
 };
 
@@ -52003,7 +52004,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
           email = _this$state.email;
       return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, {
         className: "profile-view"
-      }, /*#__PURE__*/_react.default.createElement(Row, {
+      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, {
         className: "user-info mb-5 mt-4 text-center"
       }, /*#__PURE__*/_react.default.createElement("h1", {
         className: "d-flex justify-content-center mt-2"
@@ -52019,14 +52020,14 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         className: "d-flex justify-content-center text-light mb-1"
       }, /*#__PURE__*/_react.default.createElement("b", {
         className: "mr-1"
-      }, "Birthday:"), " ", "".concat(this.formatDate(birthday)))), /*#__PURE__*/_react.default.createElement(Row, {
+      }, "Birthday:"), " ", "".concat(this.formatDate(birthday)))), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, {
         className: "justify-content-md-center"
       }, /*#__PURE__*/_react.default.createElement("h2", {
         className: "mb-2 mt-4"
       }, "My Favorite Movies "), favoriteMovieList.length === 0 && /*#__PURE__*/_react.default.createElement("p", {
         className: "text-light"
       }, "You do not have any favorite movies yet!"), favoriteMovieList.length > 0 && favoriteMovieList.map(function (movie) {
-        return /*#__PURE__*/_react.default.createElement(Col, {
+        return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, {
           sm: 12,
           md: 6
         }, /*#__PURE__*/_react.default.createElement(Card, {
@@ -52536,7 +52537,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53388" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62114" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
