@@ -63,19 +63,6 @@ class MainView extends React.Component {
     this.getMovies(authData.token);
   }
 
-  onProfileUpdate(updatedUser) {
-    this.props.setUser(updatedUser);
-    localStorage.setItem('user', updatedUser.Username);
-  }
-
-  onLoggedOut() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    this.setState({
-      user: null
-    });
-  }
-
   // GET MOVIES REQUEST
   getMovies(token) {
     axios.get('https://myflixapplication.herokuapp.com/movies', {
@@ -160,7 +147,7 @@ class MainView extends React.Component {
             if (movies.length === 0) return <div className="main-view" />;
             return <>
               <Col lg={8} md={12}>
-                <ProfileView user={user} history={history} onProfileUpdate={this.onProfileUpdate} onBackClick={() => history.goBack()} />
+                <ProfileView user={user} history={history} onBackClick={() => history.goBack()} />
               </Col>
               
             </>

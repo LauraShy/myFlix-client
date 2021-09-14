@@ -7,7 +7,7 @@ body {
   color: white;
 }
 
-.h5 {
+h5.mt-5, .h5 {
   color: $blue;
 }
 
@@ -23,4 +23,16 @@ button.btn.btn-link, button.mt-4.btn.btn-primary {
   margin-right: 20px !important;
   padding: 10px !important;
   margin-top: 20px !important;
+}
+
+button.fav-btn {
+  font-weight: 600;
+  padding: 15px;
+  align-content: center;
+}
+
+button.fav-btn:hover {
+  text-decoration: none;
+  background-color: white;
+  color: $bgblue;
 }

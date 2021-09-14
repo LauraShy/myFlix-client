@@ -27,7 +27,7 @@ body {
   color: white;
 }
 
-.h5 {
+h5.mt-5, .h5 {
   color: #84AFDD;
 }
 
@@ -44,6 +44,18 @@ button.btn.btn-link, button.mt-4.btn.btn-primary {
   padding: 10px !important;
   margin-top: 20px !important;
 }
+
+button.fav-btn {
+  font-weight: 600;
+  padding: 15px;
+  align-content: center;
+}
+
+button.fav-btn:hover {
+  text-decoration: none;
+  background-color: white;
+  color: #1A2B50;
+}
 .my-awesome-nav {
   background-color: black;
 }
@@ -57,7 +69,6 @@ button.profile-btn {
   text-decoration: none;
   padding: 1em 1em;
   font-size: 14px;
-  border-width: 2px;
   margin: 15px;
 }
 
@@ -67,19 +78,51 @@ button.profile-btn:hover {
   color: #1A2B50 !important;
 }
 
-h4.d-flex.justify-content-center.mt-3 {
-  color: #84AFDD !important;
-}
-
-.profile-view a {
-  text-decoration: none;
-  color: #1A2B50;
-}
-
-.fav-btn {
+button.profile-btn-2 {
   text-decoration: none;
   padding: 1em 1em;
-  font-weight: 700;
+  font-size: 14px;
+  margin: 15px;
+}
+
+button.profile-btn-2:hover {
+  text-decoration: none;
+  background-color: white !important;
+  color: red;
+}
+
+h4.mt-5.text-center {
+  color: #84AFDD;
+}
+
+.profile-form_label {
+  padding-top: 10px;
+  text-transform: uppercase;
+  text-align: right;
+  padding-right: 50px;
+}
+
+.form-validation-error {
+  font-size: 10pt;
+  font-weight: 300;
+  color: red;
+}
+
+.profile-form {
+  background-color: black;
+  max-width: 600px;
+  margin: 0 auto;
+  border: 1px solid #84AFDD;
+  border-radius: 5px;
+  padding-right: 30px;
+}
+
+.profile-view_movie-card {
+  height: 250px;
+}
+
+p.text-center.mt-3 {
+  color: white;
 }
 body {
   color: black;

@@ -8,7 +8,6 @@ button.profile-btn {
   text-decoration: none;
   padding: 1em 1em;
   font-size: 14px;
-  border-width: 2px;
   margin: 15px;
 }
 
@@ -18,19 +17,49 @@ button.profile-btn:hover {
   color: $bgblue !important;
 }
 
-h4.d-flex.justify-content-center.mt-3 {
-  color: $blue !important;
-}
-
-.profile-view a {
-  text-decoration: none;
-  color: $bgblue;
-}
-
-.fav-btn {
+button.profile-btn-2 {
   text-decoration: none;
   padding: 1em 1em;
-  font-weight: 700;
+  font-size: 14px;
+  margin: 15px;
 }
 
+button.profile-btn-2:hover {
+  text-decoration: none;
+  background-color: white !important;
+  color: red;
+}
 
+h4.mt-5.text-center {
+  color: $blue;
+}
+
+.profile-form_label {
+  padding-top: 10px;
+  text-transform: uppercase;
+  text-align: right;
+  padding-right: 50px;
+}
+
+.form-validation-error {
+  font-size: 10pt;
+  font-weight: 300;
+  color: red;
+}
+
+.profile-form {
+  background-color: black;
+  max-width: 600px;
+  margin: 0 auto;
+  border: 1px solid $blue;
+  border-radius: 5px;
+  padding-right: 30px;
+}
+
+.profile-view_movie-card {
+  height: 250px; 
+}
+
+p.text-center.mt-3 {
+  color: white;
+}
