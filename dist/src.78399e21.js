@@ -37731,7 +37731,8 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
       var token = localStorage.getItem("token");
       var user = localStorage.getItem("user");
 
-      _axios.default.post("https://myflixapplication.herokuapp.com/users/".concat(Username, "/favorites/").concat(this.props.movie._id), {}, {
+      _axios.default.post("https://myflixapplication.herokuapp.com/users/".concat(Username, "/movies/").concat(this.props.movie._id), {}, {
+        //I've tried a few versions of this link
         headers: {
           Authorization: "Bearer ".concat(token)
         }
@@ -37772,8 +37773,9 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         className: "mt-3"
       }, /*#__PURE__*/_react.default.createElement(_Button.default, {
         className: "fav-btn",
-        onClick: function onClick() {
-          return _this.addFavorite(movie);
+        value: movie._id,
+        onClick: function onClick(e) {
+          return _this.addFavorite(e, movie);
         }
       }, "+ Add To Favorites")), /*#__PURE__*/_react.default.createElement("h5", {
         className: "mt-5"

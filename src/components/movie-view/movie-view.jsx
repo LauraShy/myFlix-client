@@ -13,7 +13,7 @@ export class MovieView extends React.Component {
     const user = localStorage.getItem("user");
     axios
       .post(
-        `https://myflixapplication.herokuapp.com/users/${Username}/favorites/${this.props.movie._id}`, {}, {
+        `https://myflixapplication.herokuapp.com/users/${Username}/movies/${this.props.movie._id}`, {}, { //I've tried a few versions of this link
           headers: { Authorization: `Bearer ${token}` }
         })
           .then(response => {
@@ -43,7 +43,7 @@ export class MovieView extends React.Component {
         <div className="mt-3">
           <Button
                   className="fav-btn"
-                  onClick={() => this.addFavorite(movie)}
+                  value={movie._id} onClick={(e) => this.addFavorite(e, movie)}
                 >
                   + Add To Favorites
           </Button>
