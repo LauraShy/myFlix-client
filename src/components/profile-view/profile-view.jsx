@@ -178,8 +178,8 @@ export class ProfileView extends React.Component {
         <h4 className="mt-5 text-center">Favorite Movies</h4>
         {FavoriteMovies.length === 0 && <p className="text-center mt-3">You have not added any movies to your list of favorites yet!</p>}
         <Row>
-          {/* {FavoriteMovies.length > 0 &&
-          movies.map((movie) => {
+          {FavoriteMovies.length > 0 &&
+          FavoriteMovies.map((movie) => {
             if (movie._id === FavoriteMovies.find((FavoriteMovies) => FavoriteMovies === movie._id)) {
               return (
                 <Col key={movie._id}>
@@ -196,8 +196,7 @@ export class ProfileView extends React.Component {
                 </Col>
               )
             }
-          })} */} 
-          {/* Seems like the map above is the issue here, but I'm unsure of how to do it without the map or the best way to do this part.  */}
+          })} 
         </Row>
 
         <h4 className="mt-5 text-center">Update User Information</h4>
