@@ -75,7 +75,7 @@ button.profile-btn {
 button.profile-btn:hover {
   text-decoration: none;
   background-color: white !important;
-  color: #1A2B50 !important;
+  color: #84AFDD !important;
 }
 
 button.profile-btn-2 {
@@ -119,10 +119,19 @@ h4.mt-5.text-center {
 
 .profile-view_movie-card {
   height: 250px;
+  color: black !important;
 }
 
 p.text-center.mt-3 {
   color: white;
+}
+
+button.rem-fav {
+  background-color: #84AFDD;
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+  padding: 6px;
 }
 body {
   color: black;
@@ -151,7 +160,8 @@ button.btn-link {
 button.btn-link:hover {
   text-decoration: none;
   background-color: white;
-  color: #1A2B50;
+  color: #84AFDD;
+  border-color: #84AFDD;
 }
 
 img.movie-img {

@@ -57744,8 +57744,26 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
     } // Allow user to delete their account
 
   }, {
+    key: "removeFavorite",
+    value: function removeFavorite() {
+      var token = localStorage.getItem("token");
+      var user = localStorage.getItem("user");
+
+      _axios.default.delete("https://myflixapplication.herokuapp.com/users/".concat(user, "/movies/").concat(this.props.movie._id), {}, {
+        headers: {
+          Authorization: "Bearer ".concat(token)
+        }
+      }).then(function (response) {
+        alert("Removed from Favorites List");
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       var FavoriteMovies = this.state.FavoriteMovies;
       var movies = this.props.movies;
       var _this$state = this.state,
@@ -57757,7 +57775,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         className: "profile-view"
       }, /*#__PURE__*/_react.default.createElement("h1", {
         className: "text-center mt-5"
-      }, "User", this.state.Username, " Profile"), /*#__PURE__*/_react.default.createElement("h4", {
+      }, "User Profile"), /*#__PURE__*/_react.default.createElement("h4", {
         className: "mt-5 text-center"
       }, "Favorite Movies"), FavoriteMovies.length === 0 && /*#__PURE__*/_react.default.createElement("p", {
         className: "text-center mt-3"
@@ -57770,19 +57788,26 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
           }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
             to: '/movies/${movie._id}'
           }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card, {
-            key: movie._id,
             className: "profile-view_movie-card"
           }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Img, {
             variant: "top",
-            src: movie.ImageURL
+            src: movie.ImagePath
           }), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Body, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Title, null, /*#__PURE__*/_react.default.createElement("h5", {
             className: "movie-card_title"
-          }, movie.Name))))));
+          }, movie.Name)), /*#__PURE__*/_react.default.createElement("div", {
+            className: "mt-3"
+          }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
+            className: "rem-fav",
+            value: movie._id,
+            onClick: function onClick(e) {
+              return _this3.removeFavorite(e, movie);
+            }
+          }, "+ Remove from Favs"))))));
         }
       })), /*#__PURE__*/_react.default.createElement("h4", {
         className: "mt-5 text-center"
       }, "Update User Information"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form, {
-        className: "profile-form"
+        className: "profile-form mb-5"
       }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, {
         className: "profile-row mt-4"
       }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, {

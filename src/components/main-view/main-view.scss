@@ -29,7 +29,8 @@ button.btn-link {
 button.btn-link:hover {
   text-decoration: none;
   background-color: white;
-  color: $bgblue;
+  color: $blue;
+  border-color: $blue;
 }
 
 img.movie-img {
