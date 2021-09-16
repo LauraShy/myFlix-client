@@ -170,7 +170,7 @@ export class ProfileView extends React.Component {
     const user = localStorage.getItem("user");
     axios
       .delete(
-        `https://myflixapplication.herokuapp.com/users/${user}/movies/${this.props.movie._id}`, {}, { 
+        `https://myflixapplication.herokuapp.com/users/${user}/movies/${movie._id}`, {}, { 
           headers: { Authorization: `Bearer ${token}` }
         })
           .then(response => {
@@ -186,25 +186,28 @@ export class ProfileView extends React.Component {
     const { FavoriteMovies } = this.state;
     const { movies } = this.props;
     const { UsernameError, PasswordError, EmailError, BirthdayError } = this.state;
-
+    console.log(movies)
+    const favoriteMovieList = movies.filter((movie) => {
+      return FavoriteMovies.includes(movie._id);
+    });
+    console.log(favoriteMovieList)
     return (
       <Container className="profile-view">
-        <h1 className="text-center mt-5">User Profile</h1>
+        <h1 className="text-center mt-4">User Profile</h1>
 
-        <h4 className="mt-5 text-center">Favorite Movies</h4>
+        <h4 className="mt-4 text-center">Favorite Movies</h4>
         {FavoriteMovies.length === 0 && <p className="text-center mt-3">You have not added any movies to your list of favorites yet!</p>}
-        <Row>
-          {FavoriteMovies.length > 0 &&
-          FavoriteMovies.map((movie) => {
-            if (movie._id === FavoriteMovies.find((FavoriteMovies) => FavoriteMovies === movie._id)) {
-              return (
-                <Col key={movie._id}>
-                  <Link to={'/movies/${movie._id}'}>
+        <Row>    
+            {favoriteMovieList.length > 0 &&
+              favoriteMovieList.map((movie) => {
+                return (
+                  <Col key={movie._id}>
+                  <Link to={`/movies/${movie._id}`}>
                     <Card className="profile-view_movie-card">
-                      <Card.Img variant="top" src={movie.ImagePath} />
+                      <Card.Img variant="top" className="mx-auto" src={movie.ImagePath} />
                       <Card.Body>
-                        <Card.Title>
-                          <h5 className="movie-card_title">{movie.Name}</h5>
+                        <Card.Title className="text-decoration-none">
+                          <h5 className="movie-card_title">{movie.Title}</h5>
                         </Card.Title>
                         <div className="mt-3">
                           <Button
@@ -218,10 +221,10 @@ export class ProfileView extends React.Component {
                     </Card>
                   </Link>
                 </Col>
-              )
-            }
-          })} 
-        </Row>
+                );
+              })}
+          
+          </Row>
 
         <h4 className="mt-5 text-center">Update User Information</h4>
         <Form className="profile-form mb-5">
