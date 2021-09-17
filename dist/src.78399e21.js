@@ -57746,6 +57746,8 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "removeFavorite",
     value: function removeFavorite() {
+      var _this3 = this;
+
       var token = localStorage.getItem("token");
       var user = localStorage.getItem("user");
 
@@ -57755,14 +57757,18 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         }
       }).then(function (response) {
         alert("Removed from Favorites List");
+
+        _this3.componentDidMount();
       }).catch(function (error) {
         console.log(error);
+      }).then(function () {
+        return window.location.reload();
       });
     }
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
       var FavoriteMovies = this.state.FavoriteMovies;
       var movies = this.props.movies;
@@ -57784,7 +57790,9 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         className: "mt-4 text-center"
       }, "Favorite Movies"), FavoriteMovies.length === 0 && /*#__PURE__*/_react.default.createElement("p", {
         className: "text-center mt-3"
-      }, "You have not added any movies to your list of favorites yet!"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, null, favoriteMovieList.length > 0 && favoriteMovieList.map(function (movie) {
+      }, "You have not added any movies to your list of favorites yet!"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, {
+        className: "pb-5"
+      }, favoriteMovieList.length > 0 && favoriteMovieList.map(function (movie) {
         return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, {
           key: movie._id
         }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
@@ -57795,19 +57803,16 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
           variant: "top",
           className: "mx-auto",
           src: movie.ImagePath
-        }), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Body, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Title, {
-          className: "text-decoration-none"
-        }, /*#__PURE__*/_react.default.createElement("h5", {
+        }), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Body, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Title, null, /*#__PURE__*/_react.default.createElement("h5", {
           className: "movie-card_title"
-        }, movie.Title)), /*#__PURE__*/_react.default.createElement("div", {
+        }, movie.Title))))), /*#__PURE__*/_react.default.createElement("div", {
           className: "mt-3"
         }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
           className: "rem-fav",
-          value: movie._id,
-          onClick: function onClick(e) {
-            return _this3.removeFavorite(e, movie);
+          onClick: function onClick() {
+            return _this4.removeFavorite(movie._id);
           }
-        }, "+ Remove from Favs"))))));
+        }, "- Remove from Favs")));
       })), /*#__PURE__*/_react.default.createElement("h4", {
         className: "mt-5 text-center"
       }, "Update User Information"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form, {
@@ -58310,7 +58315,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54197" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49818" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

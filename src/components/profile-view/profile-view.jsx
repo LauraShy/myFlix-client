@@ -175,10 +175,12 @@ export class ProfileView extends React.Component {
         })
           .then(response => {
             alert(`Removed from Favorites List`)
+            this.componentDidMount();
           })
           .catch(function (error) {
             console.log(error);
-          });
+          })
+          .then(() => window.location.reload());
       };
 
   
@@ -197,7 +199,7 @@ export class ProfileView extends React.Component {
 
         <h4 className="mt-4 text-center">Favorite Movies</h4>
         {FavoriteMovies.length === 0 && <p className="text-center mt-3">You have not added any movies to your list of favorites yet!</p>}
-        <Row>    
+        <Row className="pb-5">    
             {favoriteMovieList.length > 0 &&
               favoriteMovieList.map((movie) => {
                 return (
@@ -206,21 +208,22 @@ export class ProfileView extends React.Component {
                     <Card className="profile-view_movie-card">
                       <Card.Img variant="top" className="mx-auto" src={movie.ImagePath} />
                       <Card.Body>
-                        <Card.Title className="text-decoration-none">
+                        <Card.Title>
                           <h5 className="movie-card_title">{movie.Title}</h5>
                         </Card.Title>
-                        <div className="mt-3">
-                          <Button
-                                  className="rem-fav"
-                                  value={movie._id} onClick={(e) => this.removeFavorite(e, movie)}
-                                >
-                                  + Remove from Favs
-                          </Button>
-                        </div>
                       </Card.Body>
                     </Card>
                   </Link>
+                  <div className="mt-3">
+                        <Button
+                            className="rem-fav"
+                            onClick={() => this.removeFavorite( movie._id)}
+                         >
+                           - Remove from Favs      
+                        </Button>
+                      </div>
                 </Col>
+
                 );
               })}
           
