@@ -170,7 +170,7 @@ export class ProfileView extends React.Component {
     const user = localStorage.getItem("user");
     axios
       .delete(
-        `https://myflixapplication.herokuapp.com/users/${user}/movies/${movie._id}`, {}, { 
+        `https://myflixapplication.herokuapp.com/users/${user}/movies/${movie._id}`, { 
           headers: { Authorization: `Bearer ${token}` }
         })
           .then(response => {
@@ -180,7 +180,7 @@ export class ProfileView extends React.Component {
           .catch(function (error) {
             console.log(error);
           })
-          .then(() => window.location.reload());
+          
       };
 
   
@@ -214,7 +214,7 @@ export class ProfileView extends React.Component {
                       </Card.Body>
                     </Card>
                   </Link>
-                  <div className="mt-3">
+                  <div className="mt-2 text-center">
                         <Button
                             className="rem-fav"
                             onClick={() => this.removeFavorite( movie._id)}

@@ -57751,7 +57751,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       var token = localStorage.getItem("token");
       var user = localStorage.getItem("user");
 
-      _axios.default.delete("https://myflixapplication.herokuapp.com/users/".concat(user, "/movies/").concat(movie._id), {}, {
+      _axios.default.delete("https://myflixapplication.herokuapp.com/users/".concat(user, "/movies/").concat(movie._id), {
         headers: {
           Authorization: "Bearer ".concat(token)
         }
@@ -57761,8 +57761,6 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         _this3.componentDidMount();
       }).catch(function (error) {
         console.log(error);
-      }).then(function () {
-        return window.location.reload();
       });
     }
   }, {
@@ -57806,7 +57804,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         }), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Body, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Title, null, /*#__PURE__*/_react.default.createElement("h5", {
           className: "movie-card_title"
         }, movie.Title))))), /*#__PURE__*/_react.default.createElement("div", {
-          className: "mt-3"
+          className: "mt-2 text-center"
         }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
           className: "rem-fav",
           onClick: function onClick() {
