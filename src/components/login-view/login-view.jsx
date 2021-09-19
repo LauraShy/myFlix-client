@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row';
+import { Link } from 'react-router-dom';
 
 import loginicon from './login-icon.png';
 import logo from './myflix-logo.png';
@@ -30,7 +31,7 @@ export function LoginView(props) {
   };
 
   return (
-    <Form>
+    <Form className="login-view">
       <Row>
         <img src={logo} className="logo"></img>
       </Row>
@@ -57,6 +58,9 @@ export function LoginView(props) {
           Submit
         </Button>
       </Row>
+      <Link to={`/register`}>
+          <h6 className="register text-center mt-5">Not a member? Register Here</h6>
+      </Link>
     </Form>
   );
 }

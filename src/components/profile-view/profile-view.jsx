@@ -165,12 +165,12 @@ export class ProfileView extends React.Component {
     }
   }
 
-  removeFavorite() {
+  removeFavorite(movieId) {
     const token = localStorage.getItem("token");
     const user = localStorage.getItem("user");
     axios
       .delete(
-        `https://myflixapplication.herokuapp.com/users/${user}/movies/${movie._id}`, { 
+        `https://myflixapplication.herokuapp.com/users/${user}/movies/${movieId}`, { 
           headers: { Authorization: `Bearer ${token}` }
         })
           .then(response => {
@@ -182,7 +182,6 @@ export class ProfileView extends React.Component {
           })
           
       };
-
   
   render() {
     const { FavoriteMovies } = this.state;
@@ -196,14 +195,13 @@ export class ProfileView extends React.Component {
     return (
       <Container className="profile-view">
         <h1 className="text-center mt-4">User Profile</h1>
-
         <h4 className="mt-4 text-center">Favorite Movies</h4>
         {FavoriteMovies.length === 0 && <p className="text-center mt-3">You have not added any movies to your list of favorites yet!</p>}
         <Row className="pb-5">    
             {favoriteMovieList.length > 0 &&
               favoriteMovieList.map((movie) => {
                 return (
-                  <Col key={movie._id}>
+                  <Col key={movie._id} className="col-4">
                   <Link to={`/movies/${movie._id}`}>
                     <Card className="profile-view_movie-card">
                       <Card.Img variant="top" className="mx-auto" src={movie.ImagePath} />
@@ -223,7 +221,6 @@ export class ProfileView extends React.Component {
                         </Button>
                       </div>
                 </Col>
-
                 );
               })}
           

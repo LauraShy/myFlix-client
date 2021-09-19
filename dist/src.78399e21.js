@@ -37295,6 +37295,8 @@ var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 
 var _Row = _interopRequireDefault(require("react-bootstrap/Row"));
 
+var _reactRouterDom = require("react-router-dom");
+
 var _loginIcon = _interopRequireDefault(require("./login-icon.png"));
 
 var _myflixLogo = _interopRequireDefault(require("./myflix-logo.png"));
@@ -37347,7 +37349,9 @@ function LoginView(props) {
     });
   };
 
-  return /*#__PURE__*/_react.default.createElement(_Form.default, null, /*#__PURE__*/_react.default.createElement(_Row.default, null, /*#__PURE__*/_react.default.createElement("img", {
+  return /*#__PURE__*/_react.default.createElement(_Form.default, {
+    className: "login-view"
+  }, /*#__PURE__*/_react.default.createElement(_Row.default, null, /*#__PURE__*/_react.default.createElement("img", {
     src: _myflixLogo.default,
     className: "logo"
   })), /*#__PURE__*/_react.default.createElement(_Row.default, {
@@ -37385,7 +37389,11 @@ function LoginView(props) {
     variant: "primary",
     type: "submit",
     onClick: handleSubmit
-  }, "Submit")));
+  }, "Submit")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+    to: "/register"
+  }, /*#__PURE__*/_react.default.createElement("h6", {
+    className: "register text-center mt-5"
+  }, "Not a member? Register Here")));
 }
 
 LoginView.propTypes = {
@@ -37395,7 +37403,7 @@ LoginView.propTypes = {
   }),
   onLoggedIn: _propTypes.default.func.isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","./login-icon.png":"components/login-view/login-icon.png","./myflix-logo.png":"components/login-view/myflix-logo.png","./login-view.scss":"components/login-view/login-view.scss","axios":"../node_modules/axios/index.js"}],"../node_modules/react-bootstrap/esm/divWithClassName.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./login-icon.png":"components/login-view/login-icon.png","./myflix-logo.png":"components/login-view/myflix-logo.png","./login-view.scss":"components/login-view/login-view.scss","axios":"../node_modules/axios/index.js"}],"../node_modules/react-bootstrap/esm/divWithClassName.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -51806,14 +51814,19 @@ require("./header.scss");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Header = function Header(props) {
+  function onLoggedOut() {
+    localStorage.clear();
+    window.open('/', '_self');
+  }
+
   var user = props.user;
   console.log(user);
-  return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar, {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, user && /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar, {
     collapseOnSelect: true,
     expand: "lg",
     className: "my-awesome-nav",
     fixed: "top"
-  }, user && /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Brand, {
+  }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Brand, {
     href: "/"
   }, /*#__PURE__*/_react.default.createElement("img", {
     src: _myflixLogo.default,
@@ -51830,7 +51843,11 @@ var Header = function Header(props) {
     href: "/"
   }, "Movies"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav.Link, {
     href: "/users/".concat(user)
-  }, "Profile")))));
+  }, "Profile"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav.Link, {
+    onClick: function onClick() {
+      onLoggedOut();
+    }
+  }, "Logout"))))));
 };
 
 var _default = Header;
@@ -57745,13 +57762,13 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
 
   }, {
     key: "removeFavorite",
-    value: function removeFavorite() {
+    value: function removeFavorite(movieId) {
       var _this3 = this;
 
       var token = localStorage.getItem("token");
       var user = localStorage.getItem("user");
 
-      _axios.default.delete("https://myflixapplication.herokuapp.com/users/".concat(user, "/movies/").concat(movie._id), {
+      _axios.default.delete("https://myflixapplication.herokuapp.com/users/".concat(user, "/movies/").concat(movieId), {
         headers: {
           Authorization: "Bearer ".concat(token)
         }
@@ -57792,7 +57809,8 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         className: "pb-5"
       }, favoriteMovieList.length > 0 && favoriteMovieList.map(function (movie) {
         return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, {
-          key: movie._id
+          key: movie._id,
+          className: "col-4"
         }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
           to: "/movies/".concat(movie._id)
         }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card, {
@@ -58075,14 +58093,13 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       var _this$state = this.state,
           movies = _this$state.movies,
           user = _this$state.user;
-      if (!user) return /*#__PURE__*/_react.default.createElement(_Row.default, null, /*#__PURE__*/_react.default.createElement(_Col.default, null, /*#__PURE__*/_react.default.createElement(_loginView.LoginView, {
-        onLoggedIn: function onLoggedIn(user) {
-          return _this4.onLoggedIn(user);
-        }
-      })));
-      if (movies.length === 0) return /*#__PURE__*/_react.default.createElement("div", {
-        className: "main-view"
-      });
+      /* if (!user) return <Row>
+        <Col>
+          <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+        </Col>
+      </Row>
+      if (movies.length === 0) return <div className="main-view" />; */
+
       return /*#__PURE__*/_react.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/_react.default.createElement(_header.default, {
         user: user
       }), /*#__PURE__*/_react.default.createElement(_Row.default, {
@@ -58313,7 +58330,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49818" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50358" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
