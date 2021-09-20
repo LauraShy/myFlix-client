@@ -70,8 +70,9 @@ button.rem-fav {
 }
 
 button.rem-fav:hover {
-  color: white;
-  background-color: $bgblue;
+  background-color: white;
+  color: $bgblue;
+  font-weight: 600;
   text-decoration: none;
   font-size: 12px;
   padding: 6px;

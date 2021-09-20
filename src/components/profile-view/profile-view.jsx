@@ -59,27 +59,34 @@ export class ProfileView extends React.Component {
   handleUpdateUser = (e) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
-    const Username = localStorage.getItem('user');
+    const username = localStorage.getItem('user');
     let validated = this.formValidation();
-    if (validated) {
-      axios.put('https://myflixapplication.herokuapp.com/users/${Username}', {
-        Username: this.state.Username,
-        Password: this.state.Password,
-        Email: this.state.Email,
-        Birthday: this.state.Birthday
-      },
-        { headers: { Authorization: `Bearer ${token}` } }
-      )
-        .then(response => {
-          const data = response.data;
-          console.log(data);
-          alert("Your information has been successfully updated!");
-          window.open('/', '_self');
-        })
-        .catch(e => {
-          console.log("Error updating user information")
-        });
-    }
+    console.log('user', {
+      username: this.state.Username,
+      password: this.state.Password,
+      email: this.state.Email,
+      birthday: this.state.Birthday
+    })
+     if (validated) {
+       axios.put(`https://myflixapplication.herokuapp.com/users/${username}`, {
+         Username: this.state.Username,
+         Password: this.state.Password,
+         Email: this.state.Email,
+         Birthday: this.state.Birthday
+       },
+         { headers: { Authorization: `Bearer ${token}` } }
+       )
+         .then(response => {
+           const data = response.data;
+           console.log('update user', data);
+           localStorage.setItem("user", data.Username);
+           alert("Your information has been successfully updated!");
+           window.open('/', '_self');
+         })
+         .catch(e => {
+           console.log("Error updating user information")
+         });
+     }
   }
 
   //Error handling with user information
@@ -131,7 +138,7 @@ export class ProfileView extends React.Component {
         console.log(response.data),
         this.setState({
           Username: response.data.Username,
-          Password: response.data.Password,
+          // Password: response.data.Password,
           Email: response.data.Email,
           Birthday: moment(response.data.Birthday).format("YYYY-MM-DD"),
           FavoriteMovies: response.data.FavoriteMovies,

@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form'
@@ -72,6 +73,9 @@ export function RegistrationView(props) {
       <Row className="d-flex mx-auto mt-3 justify-content-center"> 
         <Button variant="primary" type="submit" onClick={handleSubmit}>Submit</Button>
       </Row>
+      <Link to={`/`}>
+          <h6 className="register text-center mt-5">Already a member? Login Here</h6>
+      </Link>
     </Form>
   )
 }

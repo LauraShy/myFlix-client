@@ -37125,6 +37125,8 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _axios = _interopRequireDefault(require("axios"));
 
+var _reactRouterDom = require("react-router-dom");
+
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _Form = _interopRequireDefault(require("react-bootstrap/Form"));
@@ -37256,7 +37258,11 @@ function RegistrationView(props) {
     variant: "primary",
     type: "submit",
     onClick: handleSubmit
-  }, "Submit")));
+  }, "Submit")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+    to: "/"
+  }, /*#__PURE__*/_react.default.createElement("h6", {
+    className: "register text-center mt-5"
+  }, "Already a member? Login Here")));
 }
 
 RegistrationView.propTypes = {
@@ -37267,7 +37273,7 @@ RegistrationView.propTypes = {
     birthdate: _propTypes.default.string.isRequired
   })
 };
-},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","./register-icon.png":"components/registration-view/register-icon.png","./myflix-logo.png":"components/registration-view/myflix-logo.png","./registration-view.scss":"components/registration-view/registration-view.scss"}],"components/login-view/login-icon.png":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","./register-icon.png":"components/registration-view/register-icon.png","./myflix-logo.png":"components/registration-view/myflix-logo.png","./registration-view.scss":"components/registration-view/registration-view.scss"}],"components/login-view/login-icon.png":[function(require,module,exports) {
 module.exports = "/login-icon.09fa2392.png";
 },{}],"components/login-view/myflix-logo.png":[function(require,module,exports) {
 module.exports = "/myflix-logo.437928e8.png";
@@ -57593,12 +57599,19 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
     _defineProperty(_assertThisInitialized(_this), "handleUpdateUser", function (e) {
       e.preventDefault();
       var token = localStorage.getItem('token');
-      var Username = localStorage.getItem('user');
+      var username = localStorage.getItem('user');
 
       var validated = _this.formValidation();
 
+      console.log('user', {
+        username: _this.state.Username,
+        password: _this.state.Password,
+        email: _this.state.Email,
+        birthday: _this.state.Birthday
+      });
+
       if (validated) {
-        _axios.default.put('https://myflixapplication.herokuapp.com/users/${Username}', {
+        _axios.default.put("https://myflixapplication.herokuapp.com/users/".concat(username), {
           Username: _this.state.Username,
           Password: _this.state.Password,
           Email: _this.state.Email,
@@ -57609,7 +57622,8 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
           }
         }).then(function (response) {
           var data = response.data;
-          console.log(data);
+          console.log('update user', data);
+          localStorage.setItem("user", data.Username);
           alert("Your information has been successfully updated!");
           window.open('/', '_self');
         }).catch(function (e) {
@@ -57749,7 +57763,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       }).then(function (response) {
         console.log(response.data), _this2.setState({
           Username: response.data.Username,
-          Password: response.data.Password,
+          // Password: response.data.Password,
           Email: response.data.Email,
           Birthday: (0, _moment.default)(response.data.Birthday).format("YYYY-MM-DD"),
           FavoriteMovies: response.data.FavoriteMovies
@@ -58329,7 +58343,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54790" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62533" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
