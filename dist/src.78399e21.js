@@ -37185,7 +37185,7 @@ function RegistrationView(props) {
       Username: username,
       Password: password,
       Email: email,
-      Birthday: birthday
+      Birthday: birthdate
     }).then(function (response) {
       var data = response.data;
       console.log(data);
@@ -37265,8 +37265,7 @@ RegistrationView.propTypes = {
     password: _propTypes.default.string.isRequired,
     email: _propTypes.default.string.isRequired,
     birthdate: _propTypes.default.string.isRequired
-  }),
-  onRegistration: _propTypes.default.func.isRequired
+  })
 };
 },{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","./register-icon.png":"components/registration-view/register-icon.png","./myflix-logo.png":"components/registration-view/myflix-logo.png","./registration-view.scss":"components/registration-view/registration-view.scss"}],"components/login-view/login-icon.png":[function(require,module,exports) {
 module.exports = "/login-icon.09fa2392.png";
@@ -57749,10 +57748,10 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         }
       }).then(function (response) {
         console.log(response.data), _this2.setState({
-          username: response.data.Username,
-          password: response.data.Password,
-          email: response.data.Email,
-          birthday: (0, _moment.default)(response.data.Birthday).format("YYYY-MM-DD"),
+          Username: response.data.Username,
+          Password: response.data.Password,
+          Email: response.data.Email,
+          Birthday: (0, _moment.default)(response.data.Birthday).format("YYYY-MM-DD"),
           FavoriteMovies: response.data.FavoriteMovies
         });
       }).catch(function (error) {
@@ -58330,7 +58329,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50358" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54790" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
