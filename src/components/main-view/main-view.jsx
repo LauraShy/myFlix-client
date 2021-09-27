@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
+import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
 import { RegistrationView } from '../registration-view/registration-view';
@@ -16,15 +17,27 @@ import Col from 'react-bootstrap/Col';
 
 import './main-view.scss'
 
+// #0
+import { setMovies } from '../../actions/actions';
+
+// we haven't written this one yet
+import MoviesList from '../movies-list/movies-list';
+/* 
+  #1 The rest of components import statements but without the MovieCard's 
+  because it will be imported and used in the MoviesList component rather
+  than in here. 
+*/
+
+// #2 export keyword won't be used here
 class MainView extends React.Component {
 
   constructor(){
     super();
+    // #3 movies state removed from here
     this.state = {
-      movies: [],
-      selectedMovie: null,
       user: null,
-      register: null,
+      selectedMovie: null,
+      register: null
     };
   }
 
@@ -69,10 +82,8 @@ class MainView extends React.Component {
       headers: { Authorization: `Bearer ${token}`}
     })
     .then(response => {
-      // Assign the result to the state
-      this.setState({
-        movies: response.data
-      });
+      // #4 remove state here
+      this.props.setMovies(response.data);
     })
     .catch(function (error) {
       console.log(error);
@@ -97,7 +108,9 @@ class MainView extends React.Component {
   }
 
   render() {
-    const { movies, user } = this.state;
+    // #5 movies is extracted from this.props rather than from the this.state
+    let { movies } = this.props;
+    let { user } = this.state;
 
     /* if (!user) return <Row>
       <Col>
@@ -116,11 +129,9 @@ class MainView extends React.Component {
           if (!user) return <Col>
               <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>
-            return movies.map(m => (
-              <Col className="d-flex" md={3} key={m._id}>
-                <MovieCard movie={m} />
-              </Col>
-            ))
+            if (movies.length === 0) return <div className="main-view" />;
+            // #6 update pat to MoviesList and remove map
+            return <MoviesList movies={movies}/>;
           }} />
 
           {/* REGISTER VIEW PATH */}
@@ -181,4 +192,10 @@ class MainView extends React.Component {
   }
 }
 
-export default MainView;
+// #7
+let mapStateToProps = state => {
+  return { movies: state.movies }
+}
+
+// #8 update export to include connect, mapStateToProps (any time the store is updated, this function will be called), and so on
+export default connect(mapStateToProps, { setMovies } )(MainView);

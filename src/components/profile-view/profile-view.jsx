@@ -138,7 +138,7 @@ export class ProfileView extends React.Component {
         console.log(response.data),
         this.setState({
           Username: response.data.Username,
-          // Password: response.data.Password,
+          Password: response.data.Password,
           Email: response.data.Email,
           Birthday: moment(response.data.Birthday).format("YYYY-MM-DD"),
           FavoriteMovies: response.data.FavoriteMovies,
@@ -157,7 +157,7 @@ export class ProfileView extends React.Component {
       const token = localStorage.getItem('token');
       const Username = localStorage.getItem('user');
 
-      axios.delete('https://myflixapplication.herokuapp.com/users/${Username}', {
+      axios.delete(`https://myflixapplication.herokuapp.com/users/${Username}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
         .then(() => {
@@ -194,11 +194,11 @@ export class ProfileView extends React.Component {
     const { FavoriteMovies } = this.state;
     const { movies } = this.props;
     const { UsernameError, PasswordError, EmailError, BirthdayError } = this.state;
-    console.log(movies)
+    
     const favoriteMovieList = movies.filter((movie) => {
       return FavoriteMovies.includes(movie._id);
     });
-    console.log(favoriteMovieList)
+    
     return (
       <Container className="profile-view">
         <h1 className="text-center mt-4">User Profile</h1>
@@ -287,8 +287,8 @@ export class ProfileView extends React.Component {
               })}
                <Form.Control
                 required
-                type="text"
-                placeholder={this.state.Password}
+                type="password"
+                defaultValue={this.state.Password}
                 onChange={this.onPasswordChange} />
             </Col>
           </Row>
@@ -327,7 +327,7 @@ ProfileView.propTypes = {
   users: PropTypes.shape({
     Username: PropTypes.string.isRequired,
     Email: PropTypes.string.isRequired,
-    Birthdate: PropTypes.string,
+    Birthday: PropTypes.string,
     FavoriteMovies: PropTypes.array,
   }),
 };
