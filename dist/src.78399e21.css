@@ -27,6 +27,18 @@ h6.register.text-center.mt-5 {
 body {
   color: white;
 }
+
+.movie-card-text {
+  overflow: hidden;
+  line-height: 1.5rem;
+  max-height: 8rem;
+  -webkit-box-orient: vertical;
+  display: block;
+  display: -webkit-box;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 4;
+}
 body {
   color: white;
 }
