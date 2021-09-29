@@ -2,6 +2,7 @@ import React from 'react';
 import { Navbar, Nav, Container} from 'react-bootstrap';
 import logo from './myflix-logo.png';
 import './header.scss';
+
 const Header = (props) => {
   function onLoggedOut() {
     localStorage.clear();
