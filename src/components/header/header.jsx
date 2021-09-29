@@ -8,7 +8,7 @@ const Header = (props) => {
     localStorage.clear();
     window.open('/', '_self');
   }
-  const { user } = props;
+  const { user, history } = props;
   console.log(user)
   return (
     <>
@@ -25,8 +25,8 @@ const Header = (props) => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
-          <Nav.Link to={`/`}>Movies</Nav.Link>
-          <Nav.Link to={`/users/${user}`}>Profile</Nav.Link>
+          <Nav.Link onClick={() => { history.push(`/`); }}>Movies</Nav.Link>
+          <Nav.Link onClick={() => { history.push(`/users/${user}`); }}>Profile</Nav.Link>
           <Nav.Link onClick={() => { onLoggedOut() }}>Logout</Nav.Link>
         </Nav>
       </Navbar.Collapse>
