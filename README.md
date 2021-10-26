@@ -5,13 +5,6 @@
 To create the client-side component of a movie web application. The web application will provide users with access to information about different movies, directors, and genres. Users will be able to sign up, update their personal information, and create a list of their favorite movies.
 
 ---
-**To view the live app visit:**  
-Netlify Link: 
-Use the following credentials, or register with your own profile  
-- Username: TestAccount 
-- Password: testpassword
-
----
 
 ## **Essential Views and Features**
 
