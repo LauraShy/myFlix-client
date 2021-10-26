@@ -55,6 +55,7 @@ To create the client-side component of a movie web application. The web applicat
 - "img": "^3.0.3"
 - "moment": "^2.29.1"
 - "p": "^0.2.0"
+- "parcel-bundler": "^1.12.5"
 - "path": "^0.12.7"
 - "prop-types": "^15.7.2"
 - "public": "^0.1.5"
@@ -62,7 +63,7 @@ To create the client-side component of a movie web application. The web applicat
 - "react-bootstrap": "^1.6.1"
 - "react-dom": "^17.0.2"
 - "react-r": "^2.0.0-rc02"
-- "react-redux": "^7.2.5",
+- "react-redux": "^7.2.5"
 - "react-router-dom": "^5.2.1"
 - "redux": "^4.1.1"
 - "redux-devtools-extension": "^2.13.9"
