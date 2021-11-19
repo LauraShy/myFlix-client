@@ -5,13 +5,6 @@
 To create the client-side component of a movie web application. The web application will provide users with access to information about different movies, directors, and genres. Users will be able to sign up, update their personal information, and create a list of their favorite movies.
 
 ---
-**To view the live app visit:**  
-Netlify Link: 
-Use the following credentials, or register with your own profile  
-- Username: TestAccount 
-- Password: testpassword
-
----
 
 ## **Essential Views and Features**
 
@@ -62,6 +55,7 @@ Use the following credentials, or register with your own profile
 - "img": "^3.0.3"
 - "moment": "^2.29.1"
 - "p": "^0.2.0"
+- "parcel-bundler": "^1.12.5"
 - "path": "^0.12.7"
 - "prop-types": "^15.7.2"
 - "public": "^0.1.5"
@@ -69,7 +63,7 @@ Use the following credentials, or register with your own profile
 - "react-bootstrap": "^1.6.1"
 - "react-dom": "^17.0.2"
 - "react-r": "^2.0.0-rc02"
-- "react-redux": "^7.2.5",
+- "react-redux": "^7.2.5"
 - "react-router-dom": "^5.2.1"
 - "redux": "^4.1.1"
 - "redux-devtools-extension": "^2.13.9"
