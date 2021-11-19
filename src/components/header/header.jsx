@@ -26,7 +26,7 @@ const Header = (props) => {
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
           <Nav.Link href='/'>Movies</Nav.Link>
-          <Nav.Link href={'/users/${user}'}>Profile</Nav.Link>
+          <Nav.Link href={`/users/${user}`}>Profile</Nav.Link>
           <Nav.Link onClick={() => { onLoggedOut() }}>Logout</Nav.Link>
         </Nav>
       </Navbar.Collapse>
