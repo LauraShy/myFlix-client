@@ -140,7 +140,7 @@ export class ProfileView extends React.Component {
           Username: response.data.Username,
           Password: response.data.Password,
           Email: response.data.Email,
-          Birthday: moment(response.data.Birthday).format("YYYY-MM-DD"),
+          Birthday: response.data.Birthday.slice(0, response.data.Birthday.indexOf('T')),
           FavoriteMovies: response.data.FavoriteMovies,
         });
       })
