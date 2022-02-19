@@ -1,5 +1,7 @@
 # **myFlix App Client Side**
 
+<img height="300" src="https://laurashy.github.io/portfolio-website/img/myflix.gif">
+
 ## **Objective**
 
 To create the client-side component of a movie web application. The web application will provide users with access to information about different movies, directors, and genres. Users will be able to sign up, update their personal information, and create a list of their favorite movies.
